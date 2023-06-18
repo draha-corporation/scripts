@@ -58,6 +58,12 @@ configure_port_rules() {
         PORT_RANGES=("10250 100" "30000-32767 200")
     fi
 
+    # Create SSH rule
+    az network nsg rule create --resource-group $RESOURCE_GROUP_NAME --nsg-name $NETWORK_SECURITY_GROUP_NAME \
+        --name "Allow-Inbound-SSH" --priority 1000 --direction Inbound --access Allow --protocol Tcp \
+        --destination-port-ranges 22 --description "Allow SSH access"
+
+    # Create additional port rules
     for port_range in "${PORT_RANGES[@]}"; do
         IFS=" " read -r range priority <<< "$port_range"
         az network nsg rule create --resource-group $RESOURCE_GROUP_NAME --nsg-name $NETWORK_SECURITY_GROUP_NAME \
