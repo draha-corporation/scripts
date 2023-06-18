@@ -1,7 +1,7 @@
 #!/bin/bash
 # Prerequisites for k8s nodes.
 
-set -euxo pipefail
+set -euo pipefail
 
 # Variable Declaration
 KUBERNETES_VERSION="1.27.2-00"
