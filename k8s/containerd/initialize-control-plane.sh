@@ -2,10 +2,7 @@
 #
 # Setup for Control Plane (Master) servers
 
-set -euo pipefail
-
 # If you need public access to API server using the servers Public IP adress, change PUBLIC_IP_ACCESS to true.
-
 PUBLIC_IP_ACCESS="false"
 NODENAME=$(hostname -s)
 POD_CIDR="10.244.0.0/16"
